@@ -1,0 +1,43 @@
+@import url('https://fonts.googleapis.com/css2?family=Inconsolata:wght@600&display=swap');
+
+body {
+    background-color: #333333;
+    font-family: 'Inconsolata', monospace;
+    color: #FFFFFF;
+}
+
+#content {
+    margin-block:25%;
+}
+
+#work-in-progress {
+    text-align: center;
+    color: #656565;
+}
+
+#copyright {
+    position: fixed;
+    bottom: 10px;
+    right: 10px;
+    color: #FFFFFF;
+    text-decoration: none;
+}
+
+#legal {
+    bottom: 0;
+    opacity: 40%;
+    max-width: 100%;
+    text-align: center;
+    font-size: 14px;
+}
+
+#license {
+    color: #ffcd83;
+    text-decoration: none;
+}
+
+.license-table {
+    margin: 25px 0;
+    min-width: 100%;
+    font-size: 14px;
+}
