@@ -54,6 +54,5 @@ setInterval(async function() {
             0, SUFFIXES.length
         );
     }
-    console.log(a, b);
     a++;
 }, 200);
