@@ -8,10 +8,19 @@ body {
 
 #content {
     margin-block:25%;
+    text-align: center;
 }
 
 #work-in-progress {
-    text-align: center;
+    color: #656565;
+}
+
+#release-date {
+    font-size: 8vw;
+    color: #ffcd83;
+}
+
+#release-eta {
     color: #656565;
 }
 
