@@ -16,16 +16,145 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Ivan Sowerby</title>
     <link rel="icon" type="image/x-icon" href="img/favicon.png">
-
+    
     <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/cookie.css">
   </head>
   <body>
-    <div id="content">
-        <p id="work-in-progress"></p>
-        <p id="release-date"><span id="release-eta">ETA</span> 23/8/22</p>
+    <div id="menu">
+        <a href="index.html">
+            <img src="img/main.png" id="menu-icon">
+        </a>
+        <a href="#experience">
+            <img src="img/flaticon/briefcase.png" id="menu-icon">
+        </a>
+        <a href="#contact-me">
+            <img src="img/flaticon/envelope.png"id="menu-icon">
+        </a>
+        <a href="#donations">
+            <img src="img/flaticon/credit-card.png" id="menu-icon">
+        </a>
     </div>
+    <div id="content">
+        <h1 id="title">Ivan Sowerby</h1>
+        <h1 id="phonetic"><i>pronounced</i> ee-vahn</h1>
+        <h1 id="motto"></h1>
+        <p1 id="graph"></p1>
+        <div id="graph-button-container">
+            <button id="play-graph-button" onclick="play_graph();">
+                <img src="img/flaticon/pause.png" id="play-graph-icon">
+            </button>
+            <button id="copy-graph-button" onclick="copy_graph();">
+                <img src="img/flaticon/duplicate.png" id="copy-graph-icon">
+            </button>
+        </div>
+    </div>
+    <div id="bio">
+        <h1 id="subtitle">Biography</h1>
+        <p1>
+            Hello, I'm Ivan; a [AGE]-year-old student whom from a very early age has had a fascination with computers. From exploring their usage to now having extensive experience in the underlying electronics, low-level management and programming. Always allured to new paths, among varied technologies; a breadth-first-search approach to life. Gradually exploding each node of unexplored sets available. From Arduino microcontrollers, to Solidity blockchains, to <i>Python</i>ic and <i>Rust</i>aceous data science. Resulting in a comprehensive appreciation for that which we often take for granted. After all there must be some way in which we managed to <i>magic</i> sand into a Integrated Circuit?
+        </p1>
+        <br><br><br>
+        <p1>
+            Curiosity, a feature shared among all, the foundation of our need to learn. I am no different, with constant episodes of (eventually irritating) enquires? Life has no API call limit luckily.
+            <br><br>
+            > <q>The important thing is not to stop questioning</q> – Albert Einstein
+        </p1>
+        <br><br><br>
+        <p1>
+            Instinctive, this curiosity is what propelled by liking for STEM subjects, preferring to understand the real world; dismantling its very construct both scientifically and philosophically, although such has proved for both to be ever closer than I first imagined. With Dr Jordan B. Peterson inciting my desire to ever develop myself, to <q>stand up straight</q> among uncertainties.
+            <br><br>
+            > <q>I don't tell people, 'You're okay the way that you are.' That's not the right story. The right story is, 'You're way less than you could be'.</q> – Dr Jordan B. Peterson
+        </p1>
+        <br><br><br>
+        <p1>
+            Acceleration, my wish to ever strengthen myself has been exponentially increasing, with a rewiring for discipline. The art of doing what must be done within, with major progress both academically with consistent top grades and physically through body-building.
+        </p1>
+    </div>
+    <div id="background-container">
+        <p1 id="background"></p1>
+    </div>
+    <div id="experience">
+        <h1 id="subtitle">Experience</h1>
+        <p1>
+            •   <b>Electronics</b>, with PCB design and manufacturing; capable of using relevant specifications to requirements. Great knowledge of components and procedures.
+        </p1>
+        <br><br><br>
+        <p1>
+            •   <b>Arduino</b>, microcontroller programming in C and C++, with understanding of underlying architectures of ICs and common communication standards; SPI and I2C. 
+            <br>
+            <p1 id="experience-list">
+                → Arduino Uno, Leonardo, Mega, Due, Mini, Micro, Pro Micro,
+                <br>
+                → ESP32, ESP8266,
+                <br>
+                → Wemos D1 mini
+            </p1>
+        </p1>
+        <br><br><br>
+        <p1>
+            •	<b>Solidity</b>, with thorough Web3 knowledge by extensive studying. Built contracts in ERC20 and ERC721 token standards upon the Ethereum VM; testing in Truffle with JavaScript, understanding EVM Bytecode.
+        </p1>
+        <br><br><br>
+        <p1>
+            •	<b>Python</b>, enthusiastic for data science and processing. With data structures, algorithms and representation models. Published unique packages to PyPi. Extensive experience in APIs.
+            <br>
+            <p1 id="experience-list">
+                → Depth-First Search, Breadth-First Search, Greed Best-First Search, A+ searh,
+                <br>
+                → Floating Point Integers, Dictionaries, Trees, Linked Lists, Graphs, Hash Tables, Stacks, Queues, Heaps,
+                <br>
+                → Numpy, Pandas, MatPlotlib
+            </p1>
+        </p1>
+        <br><br><br>
+        <p1>
+            <b>Competitive programming</b>, in C++ competing in regular events on CodeChef, Codeforces, Leetcode.
+        </p1>
+        <br><br><br>
+        <p1>
+            <b>Teamwork</b>, experience in leading a team in a hackathon competition to produce an effective submission; with innovative, like-minded coordination. 
+        </p1>
+    </div>
+    <div id="contact-me">
+        <h1 id="subtitle">Contact Me</h1>
+        <div id="contact-container">
+            <a href="mailto:me@ivan.engineer" target="_blank">
+                <img src="img/flaticon/bold-envelope.png" id="contact-icon">
+            </a>
+            <a href="https://github.com/ivanl-exe" target="_blank">
+                <img src="img/flaticon/github.png" id="contact-icon">
+            </a>
+            <img src="img/flaticon/discord.png" id="contact-icon" onclick="copy_discord_username();">
+        </div>
+    </div>
+    <div id="donations">
+        <h1 id="donations-subtitle">Donations</h1>
+        <div id="donation-image-container">
+            <img src="img/flaticon/bitcoin.png" id="cryptocurrency">
+            <a href="" id="donation-uri">
+                <img src="" id="donation-qr-code">
+            </a>
+        </div>
+        <div id="donation-conversion-container">
+            <p1>$</p1>
+            <input type="number" id="cryptocurrency-amount-input">
+            <p1 id="cryptocurrency-conversion-rate">...</p1>
+        </div>
+        <form action="" id="donate-form">
+            <button id="donate-button">Donate BTC</button>
+        </a>
+    </div>
+
     <div id="legal">
         <p1>Copyright © [YEAR] Ivan Sowerby. Rights Reserved</p1>
+        <br><br>
+        <p1>Icons under the directory  </p1>
+        <a href="https://github.com/ivanl-exe/ivanl-exe.github.io/tree/main/img/flaticon" target="_blank" id="license">img/flaticon/</a>
+        <p1> are copyright of </p1>
+        <a href="https://www.flaticon.com/uicons" target="_blank" id="license">UIcons</a>
+        <p1> from </p1>
+        <a href="https://www.flaticon.com" target="_blank" id="license">www.flaticon.com</a>
         <br><br>
         <p1>This Source Code Form is subject to the terms of the Mozilla Public License, v. 2.0. If a copy of the MPL was not distributed with this file, You can obtain one at.</p1>
         <a href="http://mozilla.org/MPL/2.0/" target="_blank" id="license">http://mozilla.org/MPL/2.0/</a>
@@ -33,7 +162,7 @@
         <p1>Otherwise the license can be accessed by the respective</p1>
         <a href="https://github.com/ivanl-exe/ivanl-exe.github.io/blob/main/LICENSE" target="_blank" id="license">Github repository,</a>
         <p1>and or locally on the webserver at</p1>
-        <a href="https://www.ivan.engineer/LICENSE" target="_blank" id="license">/LICENSE</a>
+        <a href="https://ivan.engineer/LICENSE" id="license" onclick="notify_license_download();">/LICENSE</a>
         <br><br>
         <table class="license-table">
             <tr>
@@ -65,13 +194,31 @@
         </table>
     </div>
     <a href="#license" id="copyright">© [YEAR] Ivan Sowerby</a>
-  </body>
+    <div id="notification-container">
+        <p id="notification">Discord Username Copied!</p>
+    </div>
+    <div id="cookie-bootstrap">
+        <p1>ivan.engineer uses cookies for analytics and traffic,</p1>
+        <a href="https://support.google.com/analytics/answer/6004245" target="_blank">learn more</a>
+    </div>
+</body>
   <script src="js/modules/stryle.js"></script>
+  <script src="js/utility/time.js"></script>
   <script src="js/utility/random.js"></script>
   <script src="js/utility/change.js"></script>
   <script src="js/utility/math.js"></script>
   <script src="js/utility/string.js"></script>
   <script src="js/utility/measurement.js"></script>
+  <script src="js/pixel.js"></script>
+  <script src="js/menu.js"></script>
+  <script src="js/motto.js"></script>
+  <script src="js/glyth_graph.js"></script>
+  <script src="js/graph.js"></script>
+  <script src="js/glyth_background.js"></script>
+  <script src="js/background.js"></script>
   <script src="js/copyright.js"></script>
-  <script src="js/work_in_progress.js"></script>
+  <script src="js/bio.js"></script>
+  <script src="js/contact.js"></script>
+  <script src="js/donate.js"></script>
+  <script src="js/notification.js"></script>
 </html>

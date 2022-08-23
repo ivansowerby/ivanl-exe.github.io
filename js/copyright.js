@@ -18,3 +18,9 @@ let legal = LEGAL_BY_ID.innerHTML.replace(
 );
 
 LEGAL_BY_ID.innerHTML = legal;
+
+function notify_license_download() {
+    notify(
+        "Downloading License " + tick("#ffcd83")
+    );
+}

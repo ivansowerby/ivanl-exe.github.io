@@ -15,3 +15,12 @@ Array.prototype.swap = function(i, j) {
     this[i] = this[j];
     this[j] = buffer;
 }
+
+function tick(color) {
+    let glyth = new Stryle("✓");
+    glyth.color(
+        color,
+        [0]
+    );
+    return glyth.export();
+}

@@ -1,0 +1,18 @@
+#cookie-bootstrap {
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    margin: 0;
+    z-index: 999;
+    opacity: 50;
+    border-radius: 0;
+    font-size: 3vmin;
+    text-align: center;
+    color: #ffcd83;
+    background: #212327;
+}
+
+#cookie-bootstrap a {
+    color: #FFFFFF;
+    text-decoration: underline;
+}
