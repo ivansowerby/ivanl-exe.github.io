@@ -29,6 +29,11 @@ const GRAPHS = [
     )
 ]
 
+let graph_refresh_rate = 50;
+if(isMobile) {
+    graph_refresh_rate = 250;
+}
+
 const GRAPH_BLANK_GLYTH = '~'
 const GRAPH_NEWLINE = '<br>'
 
@@ -120,7 +125,7 @@ setInterval(async function() {
         }
         glyth_graph.clear();
     }
-}, 50);
+}, graph_refresh_rate);
 
 const PLAY_BUTTON = document.getElementById(
     "play-graph-icon"

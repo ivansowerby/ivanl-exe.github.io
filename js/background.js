@@ -27,9 +27,6 @@ let glyth_background = new GlythBackground(
 );
 
 setInterval(async function() {
-    if(window.mobileCheck()) {
-        return;
-    }
     let font_size = BACKGROUND_CONTAINER_BY_ID.clientWidth * 2 / BACKGROUND_WIDTH;
     BACKGROUND_BY_ID.style.fontSize = font_size.toString() + "px";
 
@@ -41,21 +38,25 @@ setInterval(async function() {
         height
     );
 
-    let glyth = new Stryle(
-        random_symbol()
-    );
-    glyth.color(
-        "#656565",
-        [0]
-    )
-    glyth_background.randomize(
-        glyth
-    );
-
-    scene = glyth_background.scene;
+    let gravity = 0
+    if(!isMobile) {
+        let glyth = new Stryle(
+            random_symbol()
+        );
+        glyth.color(
+            "#656565",
+            [0]
+        )
+        glyth_background.randomize(
+            glyth
+        );
+    
+        scene = glyth_background.scene;
+        gravity = 1;
+    }
     let canvas = glyth_background.export(
         "<br>",
-        gravity = 1
+        gravity
     );
     BACKGROUND_BY_ID.innerHTML = canvas;
 }, 500);
