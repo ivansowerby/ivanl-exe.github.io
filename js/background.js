@@ -6,6 +6,12 @@ const BACKGROUND_BY_ID = document.getElementById(
     "background"
 );
 
+background_refresh_rate = 500;
+if(isMobile) {
+    background_refresh_rate = Infinity;
+    BIO_BY_ID.style.position = "static";
+}
+
 const BACKGROUND_BLANK_GLYTH = '~'
 const BACKGROUND_NEWLINE = '<wbr>'
 
@@ -38,25 +44,21 @@ setInterval(async function() {
         height
     );
 
-    let gravity = 0
-    if(!isMobile) {
-        let glyth = new Stryle(
-            random_symbol()
-        );
-        glyth.color(
-            "#656565",
-            [0]
-        )
-        glyth_background.randomize(
-            glyth
-        );
-    
-        scene = glyth_background.scene;
-        gravity = 1;
-    }
+    let glyth = new Stryle(
+        random_symbol()
+    );
+    glyth.color(
+        "#656565",
+        [0]
+    )
+    glyth_background.randomize(
+        glyth
+    );
+
+    scene = glyth_background.scene;
     let canvas = glyth_background.export(
         "<br>",
-        gravity
-    );
+        gravity = 1
+    )
     BACKGROUND_BY_ID.innerHTML = canvas;
-}, 500);
+}, background_refresh_rate);
