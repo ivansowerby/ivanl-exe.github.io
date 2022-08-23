@@ -5,3 +5,8 @@ window.mobileCheck = function() {
 }
 
 const isMobile = window.mobileCheck();
+if(isMobile) {
+    window.location.replace(
+        "https://ivan.engineer/mobile"
+    );
+}

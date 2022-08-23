@@ -6,12 +6,6 @@ const BACKGROUND_BY_ID = document.getElementById(
     "background"
 );
 
-background_refresh_rate = 500;
-if(isMobile) {
-    background_refresh_rate = Infinity;
-    BIO_BY_ID.style.position = "static";
-}
-
 const BACKGROUND_BLANK_GLYTH = '~'
 const BACKGROUND_NEWLINE = '<wbr>'
 
@@ -59,6 +53,6 @@ setInterval(async function() {
     let canvas = glyth_background.export(
         "<br>",
         gravity = 1
-    )
+    );
     BACKGROUND_BY_ID.innerHTML = canvas;
-}, background_refresh_rate);
+}, 500);
