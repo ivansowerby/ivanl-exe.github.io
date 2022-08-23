@@ -27,6 +27,9 @@ let glyth_background = new GlythBackground(
 );
 
 setInterval(async function() {
+    if(window.mobileCheck()) {
+        return;
+    }
     let font_size = BACKGROUND_CONTAINER_BY_ID.clientWidth * 2 / BACKGROUND_WIDTH;
     BACKGROUND_BY_ID.style.fontSize = font_size.toString() + "px";
 
