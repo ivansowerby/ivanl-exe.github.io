@@ -1,4 +1,4 @@
-const PATH = "game/rock-paper-scissors/json/emoji.json";
+const PATH = "http://ivanl-exe.github.io/game/rock-paper-scissors/json/emoji.json";
 const EMOJIS = loadJSON(PATH);
 
 emojifyDocument(document.body);
