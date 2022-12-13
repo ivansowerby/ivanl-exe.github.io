@@ -78,7 +78,7 @@ function winner(user, machine) {
         (user == "paper" && machine == "rock") ||
         (user == "scissors" && machine == "paper")
     ) {
-        console.log("user");
+        return "user";
     }
     return "machine";
 }
