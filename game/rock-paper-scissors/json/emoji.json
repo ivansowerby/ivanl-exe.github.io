@@ -1,0 +1,22 @@
+{
+    "🪨": {
+        "id": 0,
+        "alt": "rock",
+        "src": "img/rock_flat.svg"
+    },
+    "📰": {
+        "id": 1,
+        "alt": "paper",
+        "src": "img/newspaper_flat.svg"
+    },
+    "✂️": {
+        "id" : 2,
+        "alt": "scissors",
+        "src": "img/scissors_flat.svg"
+    },
+    "❔": {
+        "id": 3,
+        "alt": "question mark",
+        "src": "img/white_question_mark_flat.svg"
+    }
+}
