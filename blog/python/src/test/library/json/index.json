@@ -1,0 +1,12 @@
+{
+    "library": [
+        {
+            "filepath": "../test.md",
+            "title": "Lorem ipsum",
+            "author": "John Doe",
+            "blurb": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer sit amet nunc nec leo tempor sagittis at in massa.",
+            "timestamp": 1692214225.5028777,
+            "hash": "effe69aaea83a8bab2b6b6612050c758c57e005085934fd512be85ee2457a7c6"
+        }
+    ]
+}

@@ -1,0 +1,92 @@
+@import url('https://fonts.googleapis.com/css2?family=Gelasio&display=swap');
+
+:root {
+    --background-color: #202020;
+}
+
+html, body {
+    padding: 0;
+    margin: 0;
+}
+
+body {
+    text-align: center;
+    color: white;
+    background-color: var(--background-color);
+    font-family: 'Gelasio', sans-serif;
+    letter-spacing: 0.5px;
+}
+
+img {
+    user-select: none;
+    -webkit-user-drag: none;
+}
+
+.notification {
+    position: fixed;
+    top: 0;
+    width: 100vw;
+    height: 20px;
+    background: linear-gradient(to bottom, white, rgba(0, 0, 0, 0));
+}
+
+@keyframes appear {
+    0% { opacity: 0%; }
+    100% { opacity: 100%; }
+}
+
+.blog-container {
+    margin: auto;
+    width: min(calc(100% - 44px), 900px);
+    min-height: 100vh;
+    display: flex;
+    font-size: 1.25em;
+}
+
+.blog-item {
+    padding-inline: 20px;
+    width: 100%;
+    align-self: center;
+    background-color: rgba(0, 0, 0, 50%);
+    border: solid white 2px;
+    border-radius: 15px;
+}
+
+.heading-container {
+    margin: auto;
+    width: fit-content;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+.heading-container > div {
+    display: none;
+}
+
+.heading-container:hover > div {
+    display: block;
+}
+
+.heading-fragment-button {
+    width: 40px;
+    background-color: rgba(0, 0, 0, 0);
+    border: none;
+}
+
+.heading-fragment-button > img {
+    width: 40px;
+    filter: contrast(1) invert(1);
+}
+
+#copyright {
+    position: fixed;
+    padding: 5px;
+    margin: 10px;
+    right: 0;
+    bottom: 0;
+    color: orange;
+    background-color: black;
+    border-radius: 10px;
+    opacity: 80%;
+}

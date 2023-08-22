@@ -1,0 +1,99 @@
+@import url('https://fonts.googleapis.com/css2?family=Space+Grotesk&family=Gelasio&display=swap');
+
+:root {
+    --background-color: #202020;
+}
+
+html, body {
+    padding: 0;
+    margin: 0;
+}
+
+body {
+    text-align: center;
+    color: white;
+    background-color: var(--background-color);
+    font-family: 'Space Grotesk', sans-serif;
+}
+
+img {
+    user-select: none;
+    -webkit-user-drag: none;
+}
+
+#background {
+    position: fixed;
+    left: 0;
+    top: 0;
+    width: 100vw;
+    height: 100vh;
+    z-index: -1;
+}
+
+.page-container {
+    margin: auto;
+    width: min(100vw, 500px);
+    height: 100vh;
+    display: grid;
+}
+
+.menu-container {
+    padding: 20px;
+    display: grid;
+    grid-template-rows: repeat(2, 1fr);
+    gap: 40px;
+    align-self: center;
+    backdrop-filter: blur(10px);
+}
+
+.title-container {
+    margin: auto;
+    width: fit-content;
+    height: 100px;
+    display: flex;
+    flex-direction: row;
+    gap: 20px;
+}
+
+#icon {
+    height: 100px;
+    border: solid white 2px;
+    border-radius: 15px;
+}
+
+.blog-container {
+    margin: auto;
+    padding-inline: 20px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 40px;
+    background-color: black;
+    border: none;
+    border-radius: 15px;
+    user-select: none;
+}
+
+.blog-container:hover {
+    border: solid white 2px;
+}
+
+#blog {
+    color: white;
+}
+
+#blog-image {
+    filter: contrast(1) invert(1);
+}
+
+#copyright {
+    position: fixed;
+    padding: 5px;
+    margin: 10px;
+    right: 0;
+    bottom: 0;
+    color: orange;
+    background-color: black;
+    border-radius: 10px;
+    opacity: 80%;
+}
