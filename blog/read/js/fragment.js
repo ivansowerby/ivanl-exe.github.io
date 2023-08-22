@@ -7,12 +7,13 @@ const fragmentHeadings = (parent) => {
 
     const headingContainers = $(`.${_class}`);
     const fragmentImageSrc = "img/tag_FILL0_wght700_GRAD200_opsz48.svg";
-    const fragmentButton = addImageWithinButton(headingContainers, "heading-fragment-button", fragmentImageSrc)
+    const fragmentButton = addImageWithinButton(headingContainers, "heading-fragment-button", fragmentImageSrc, BEFORE_ELEMENT)
     fragmentButton.on("click", (e) => {
         const child = $(e.target);
         const grandparent = ancestor(2, child);
         const granduncle = grandparent.siblings();
         const hash = granduncle.attr("id");
+        scrollToElement(hash);
         window.location.hash = hash;
         createNotification();
     });

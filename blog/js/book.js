@@ -87,8 +87,8 @@ class Book {
     }
 }
 
-const addImageWithinButton = (parent, _class, src) => {
-    const button = addElement(parent, "button", _class);
+const addImageWithinButton = (parent, _class, src, relative = AFTER_ELEMENT) => {
+    const button = addElement(parent, "button", _class, relative);
     button.wrap("<div>");
     const image = addElement(button, "img");
     image.attr("src", src);

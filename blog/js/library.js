@@ -6,5 +6,6 @@ $().ready(() => {
             const shelf = $(".shelf-container"); 
             book.shelf(onto = shelf);
         }
+        scrollToFragment();
     });
 })

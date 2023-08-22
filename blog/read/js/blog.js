@@ -18,6 +18,7 @@ $().ready(() => {
             const blogItem = addElement(blogContainer, "div", "blog-item");
             blogItem.html(html);
             fragmentHeadings(blogItem);
+            scrollToFragment();
         });
     }
 });
