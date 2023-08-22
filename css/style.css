@@ -49,9 +49,10 @@ img {
 .title-container {
     margin: auto;
     width: fit-content;
-    height: 100px;
+    height: 104px;
     display: flex;
     flex-direction: row;
+    align-items: center;
     gap: 20px;
 }
 
