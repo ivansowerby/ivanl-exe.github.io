@@ -43,17 +43,21 @@ img {
     grid-template-rows: repeat(2, 1fr);
     gap: 40px;
     align-self: center;
-    backdrop-filter: blur(10px);
+    backdrop-filter: blur(8px);
+    border-radius: 25px;
+}
+
+.menu-item {
+    display: flex;
+    flex-direction: row;
+    gap: 20px;
 }
 
 .title-container {
     margin: auto;
     width: fit-content;
     height: 104px;
-    display: flex;
-    flex-direction: row;
     align-items: center;
-    gap: 20px;
 }
 
 #icon {
@@ -62,29 +66,34 @@ img {
     border-radius: 15px;
 }
 
-.blog-container {
+.blog-container, .github-container {
     margin: auto;
     padding-inline: 20px;
     display: flex;
     flex-direction: row;
+    gap: 20px;
     align-items: center;
-    gap: 40px;
     background-color: black;
     border: none;
     border-radius: 15px;
     user-select: none;
 }
 
-.blog-container:hover {
+button:hover {
     border: solid white 2px;
 }
 
-#blog {
+#blog, #github {
     color: white;
 }
 
 #blog-image {
     filter: contrast(1) invert(1);
+}
+
+#invertocat-image {
+    padding: 10px 0 10px 0;
+    height: 40px;
 }
 
 #copyright {
