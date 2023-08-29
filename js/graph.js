@@ -18,7 +18,7 @@ $().ready(() => {
     let position = 0;
     beginInterval(() => {
         const topMargin = fontSize / canvas.height() / 2;
-        const equation = (x) => (Math.sin(x * 2 * Math.PI) + 1) / 2 * (1 - topMargin) + topMargin;
+        const equation = (x) => 1 - (Math.sin(x * 2 * Math.PI) + 1) / 2 * (1 - topMargin) - (topMargin / 2);
         const variable = {x: position / divisions};
         const color = gradient.color.toRGB();
         const style = {

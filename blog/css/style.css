@@ -171,8 +171,8 @@ img {
 }
 
 @keyframes appear {
-    0% { opacity: 0%; }
-    100% { opacity: 100%; }
+    from { opacity: 0%; }
+    to { opacity: 100%; }
 }
 
 .book-item-bottom > div {

@@ -96,14 +96,15 @@ const addImageWithinButton = (parent, _class, src, relative = AFTER_ELEMENT) => 
 }
 
 
-class Library {
+class LibraryPlan {
     constructor(path = "json/library/index.json") {
         this.path = path;
-        this.books = [];
     }
 
     async load() {
-        await $.getJSON(this.path, (obj) => this.books = obj.library)
-            .fail(() => this.load());
+        return (
+            await $.getJSON(this.path)
+                .fail(() => this.load())
+        ).library;
     }
 }

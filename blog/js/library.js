@@ -1,8 +1,8 @@
 $().ready(() => {
-    const library = new Library();
-    library.load().then(() => {
-        for(const book_content of library.books) {
-            const book = new Book(book_content);
+    const libraryPlan = new LibraryPlan();
+    libraryPlan.load().then((libraryPlan) => {
+        for(const bookProperties of libraryPlan) {
+            const book = new Book(bookProperties);
             const shelf = $(".shelf-container"); 
             book.shelf(onto = shelf);
         }
