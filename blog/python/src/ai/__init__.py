@@ -24,28 +24,23 @@ class Chat:
         return [message['content'] for message in self.conversation]
 
 class AI:
-    def __init__(self, config_path: Union[tuple[str], list[str], str]) -> None:
-        typeof = type(config_path)
-        if typeof == tuple or typeof == list: config_path = join_path(*config_path)
-        self.config_path = join_path(nth_backtrack_path(2, __file__), format_filepath(config_path, format = '.toml'))
-        
-        with open(self.config_path, 'r') as file:
-            self.config = load(file)
-
-        config = self.config['openai']
-        
+    def __init__(self, config: dict) -> None:        
         self.model = config['model']
         self.encoder = encoding_model(self.model)
         
         self.max_tokens = config['max-tokens']
         
-        self.api_key = config['api-key']
-        openai.api_key = self.api_key
+        api_key = config['api-key']
+        openai.api_key = api_key
+
+        preference = config['preference']
+        self.describe_original = preference['describe-original']
         
         roles = config['role']
-        self.system_statement = roles['system']['statement']
+        system_role = roles['system']
+        system_statement = system_role['statement']
         self.chat = Chat()
-        self.chat.message(Chat.ASSISTANT, self.system_statement)
+        self.chat.message(Chat.ASSISTANT, system_statement)
 
     def token_counter(self, *statements: tuple[str]) -> int:
         return sum([len(self.encoder.encode(statement)) for statement in statements])

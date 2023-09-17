@@ -4,7 +4,7 @@ def find_all(s: str, selectors: Union[str, tuple[str], list[str]], by: Callable 
     if type(selectors) == str: selectors = [selectors]
     l = []
     for selector in selectors:
-        i = 0
+        i = -1
         for _ in range(s.count(selector)):
             j = i
             i = by(s, selector, i + 1)
@@ -14,6 +14,18 @@ def find_all(s: str, selectors: Union[str, tuple[str], list[str]], by: Callable 
 
 def find_by(s: str, selectors: Union[tuple[str], list[str]], by: Callable = str.find) -> int:
     return [i for i in map(lambda selector: by(s, selector), selectors) if i != -1]
+
+def split_by(s: str, selectors: Union[str, tuple[str], list[str]], by: Callable = str.find) -> list:
+    if type(selectors) == str: selectors = [selectors]
+    l = []
+    while True:
+        li = find_by(s, selectors, by)
+        flag = len(li) == 0
+        i = min(li) if not flag else len(s)
+        l.append(s[:i])
+        if flag: break
+        s = s[i+1:]
+    return l
 
 def __until__(s: str, selectors: Union[tuple[str], list[str], str], _range: Union[tuple[int], list[int]]) -> int:
     (start, stop, increment) = _range
@@ -25,3 +37,13 @@ def __until__(s: str, selectors: Union[tuple[str], list[str], str], _range: Unio
 
 def count_all(s: str, selectors: Union[tuple[str], list[str]]) -> int:
     return sum([s.count(selector) for selector in selectors])
+
+def extract_enclosed(s: str, prefix: str, suffix: str) -> list[tuple]:
+    l = []
+    i = -1
+    for _ in range(s.count(prefix)):
+        i = s.find(prefix, i + 1)
+        i += 1
+        j = s.find(suffix, i)
+        l.append(s[i:j])
+    return l

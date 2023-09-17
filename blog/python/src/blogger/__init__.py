@@ -2,9 +2,11 @@ from typing import Union, Optional
 from collections import defaultdict
 from util.path import format_filepath, backtrack_path, join_path, trace_filepath
 from os.path import isfile, getctime, isdir
+from translator import Translator
 from ai import AI
 from util.hash import hash
-from json import load, dump
+from json import load as json_load, dump as json_dump
+from toml import load as toml_load
 
 class Library:
     def __init__(self, library: Optional[dict] = None) -> None:
@@ -33,7 +35,8 @@ class Description:
             if key not in self.__dict__: continue
             self.__dict__[key] = value
 
-CONFIG_PATH = ('toml', 'config.toml')
+CUSTOM_INDEX_PATH = ('translator', 'custom', 'json', 'index.json')
+CONFIG_PATH = ('config', 'config.toml')
 
 class Blogger:
     def __init__(self, filepath: Union[tuple[str], list[str], str]) -> None:
@@ -46,10 +49,25 @@ class Blogger:
         with open(self.filepath, 'r') as file:
             self.blog = file.read()
         
-        self.ai = AI(CONFIG_PATH)
+        with open(join_path(*CONFIG_PATH), 'r') as file:
+            self.config = toml_load(file)
+        
+        translator_config = self.config['translator']
+        translator = Translator(translator_config, CUSTOM_INDEX_PATH)
+
+        self.output_blog = translator.translate(self.blog)
+        self.filepath = translator.output_filepath(self.filepath)
+        
+        with open(self.filepath, 'w') as file:
+            file.write(self.output_blog)
+
+        openai_config = self.config['openai']
+        self.ai = AI(openai_config)
     
     def describe(self, max_attempts: int = 5) -> dict:
-        description = self.ai.describe(self.blog, max_attempts)
+        if self.ai.describe_original: blog = self.blog
+        else: blog = self.output_blog
+        description = self.ai.describe(blog, max_attempts)
         return description
     
     def index(self, destination_path: Union[tuple[str], list[str], str], description: dict = {}, indent: int = 4) -> str:
@@ -60,7 +78,7 @@ class Blogger:
         library = Library()
         if isfile(destination_path):
             with open(destination_path, 'r') as file:
-                obj = load(file)
+                obj = json_load(file)
                 library.load(obj)
         
         description = Description(description)
@@ -74,7 +92,7 @@ class Blogger:
         library.shelf(vars(description))
 
         with open(destination_path, 'w') as file:
-            dump(vars(library), file, indent = indent)
+            json_dump(vars(library), file, indent = indent)
 
         return destination_path
 

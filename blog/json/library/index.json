@@ -7,6 +7,14 @@
             "blurb": "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
             "timestamp": 1692214225.5028777,
             "hash": "3bd763ba248b5e04c027fdb93ae4fde5a0e29348fed8857461117173ae5f4cf1"
+        },
+        {
+            "filepath": "../../library/beyond_alarism.out.md",
+            "title": "Beyond Alarmism",
+            "author": "Ivan Sowerby",
+            "blurb": "A case for the future",
+            "timestamp": 1694862375.9989746,
+            "hash": "d7b75e3b045e592bbcb64f1324a955945944ce631bda87ba6e454153ca1f0c9a"
         }
     ]
 }

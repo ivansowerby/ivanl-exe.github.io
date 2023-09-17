@@ -49,6 +49,17 @@ downward_path_padding = lambda s: __until__(s, PATH_SELECTORS, (len(s) - 1, 0, -
 def join_path(*paths: tuple[str], delimiter: str = '/') -> str:
     return delimiter.join([path[upward_path_padding(path):downward_path_padding(path)+1] for path in paths])
 
+def split_path(path: str, delimiters: Union[tuple, list] = PATH_SELECTORS) -> tuple[str]:
+    paths = []
+    while True:
+        l = find_by(path, delimiters, by = str.find)
+        flag = len(l) == 0
+        i = min(l) if not flag else len(path)
+        paths.append(path[:i])
+        path = path[i+1:]
+        if flag: break
+    return tuple(paths)
+
 def extract_filename(filepath: str) -> str:
     return filepath[max(find_by(filepath, PATH_SELECTORS, by = str.rfind)):]
 
