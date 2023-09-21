@@ -41,6 +41,22 @@ img {
     to { opacity: 100%; }
 }
 
+#icon {
+    position: fixed;
+    left: 0;
+    top: 0;
+    height: 100px;
+    aspect-ratio: 1 / 1;
+    align-self: center;
+    border-radius: 0 0 10px 0;
+}
+
+#icon:hover {
+    border: solid white;
+    border-left: 2px;
+    border-top: 2px;
+}
+
 .error-container {
     width: 100%;
     height: calc(100vh - 4px);
@@ -185,6 +201,22 @@ img {
 .heading-fragment-button > img {
     width: 40px;
     filter: contrast(1) invert(1);
+}
+
+.giphy {
+    padding: 0;
+    width: 100%;
+    overflow: hidden;
+}
+
+.giphy > iframe {
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    height: 100%;
+    background-color: #121212;
+    border: none;
+    border-radius: 10px;
 }
 
 #copyright {

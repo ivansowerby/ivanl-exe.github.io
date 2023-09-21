@@ -29,11 +29,11 @@ const INVALID_STATUS = "invalid";
 class Statuses {
     constructor(elements, statusPlan) {
         this.statusPlan = statusPlan;
-        const header = addElement($("body"), "div", "header", BEFORE_ELEMENT);
-        const headerContainer = addElement(header, "div", "header-container");
-        addArea(elements.length, () => addElement(headerContainer, "div", "status-container"));
+        const header = addChild($("body"), "div", "header", BEFORE_ELEMENT);
+        const headerContainer = addChild(header, "div", "header-container");
+        addArea(elements.length, () => addChild(headerContainer, "div", "status-container"));
         const statusContainers = $(".status-container");
-        this.statusItems = addElement(statusContainers, "div", "status-item");
+        this.statusItems = addTwins(statusContainers, "div", "status-item");
         for(const [containerSelector, [elementClass, elementsProperties]] of zip(this.statusItems, elements)) {
             const container = $(containerSelector);
             container.addClass(elementClass);
@@ -42,11 +42,12 @@ class Statuses {
                 const tag = elementProperties.tag;
                 const _class = attributes.class;
                 delete attributes.class;
-                const element = addElement(container, tag, _class);
+                const element = addChild(container, tag, _class);
                 element.attr(attributes);
                 const content = elementProperties.content;
                 element.html(content);
             }
+            $(window).trigger("resize");
         }
     }
 

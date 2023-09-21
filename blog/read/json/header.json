@@ -5,7 +5,7 @@
             "attributes": {
                 "class": "status-name"
             },
-            "content": "hash permanence"
+            "content": "hash <span class=\"mobile-unfriendly\">permanence</span>"
         },
         {
             "tag": "img",
@@ -26,7 +26,7 @@
             "attributes": {
                 "class": "status-name"
             },
-            "content": "verified signature"
+            "content": "<span class=\"mobile-unfriendly\">verified</span> signature"
         },
         {
             "tag": "img",

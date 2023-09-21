@@ -2,7 +2,7 @@ import * as crypto from "../../modules/crypto.js";
 
 $().ready(() => {
     const blogContainer = $(".blog-container");
-    const blogItem = addElement(blogContainer, "div", "blog-item");
+    const blogItem = addChild(blogContainer, "div", "blog-item");
     
     window.error = new Error(blogItem);
     

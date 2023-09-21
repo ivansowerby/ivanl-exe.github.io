@@ -8,25 +8,26 @@ class Book {
     }
 
     shelf(onto) {
-        const book = addElement(onto, "div", "book-container");
+        const book = addChild(onto, "div", "book-container");
+        console.log(book.html());
         const hash = this.content.hash;
         book.attr("id", hash);
         //left
-        const bookItemLeft = addElement(book, "div", "book-item-left");
+        const bookItemLeft = addChild(book, "div", "book-item-left");
         this.#add(bookItemLeft, ["title", "author", "time and date", "timestamp"]);
         //right
         const bookItemRight = addArea(2, () => {
-            return addElement(book, "div", "book-item-right");
+            return addChild(book, "div", "book-item-right");
         });
         this.#add(bookItemRight, ["filepath", "hash"]);
         //middle
         const bookItemMiddle = addArea(3, () => {
-            return addElement(book, "div", "book-item-middle");
+            return addChild(book, "div", "book-item-middle");
         });
         this.#add(bookItemMiddle, ["blurb"]);
         //bottom
         const bookItemBottom = addArea(3, () => {
-            return addElement(book, "div", "book-item-bottom");
+            return addChild(book, "div", "book-item-bottom");
         });
 
         const queryObj = {
@@ -76,21 +77,21 @@ class Book {
             const value = this.content[key];
             const _class = key.replaceAll(" ", "-");
             //parent (pair)
-            const pair = addElement(element, "div", _class);
+            const pair = addChild(element, "div", _class);
             //key
-            const bookItemKey = addElement(pair, "div", "book-item-key");
+            const bookItemKey = addChild(pair, "div", "book-item-key");
             bookItemKey.text(key);
             //value
-            const bookItemValue = addElement(pair, "div", `book-item-value ${_class}`);
+            const bookItemValue = addChild(pair, "div", `book-item-value ${_class}`);
             bookItemValue.text(value);
         }
     }
 }
 
 const addImageWithinButton = (parent, _class, src, relative = AFTER_ELEMENT) => {
-    const button = addElement(parent, "button", _class, relative);
+    const button = addTwins(parent, "button", _class, relative);
     button.wrap("<div>");
-    const image = addElement(button, "img");
+    const image = addTwins(button, "img");
     image.attr("src", src);
     return button;
 }

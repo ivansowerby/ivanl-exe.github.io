@@ -1,6 +1,6 @@
 const createNotification = (n = 4, ms = 500) => {
     const parent = $("body");
-    const notification = addElement(parent, "div", "notification");
+    const notification = addChild(parent, "div", "notification");
     let count = 0
     notification.playKeyframe({
         name: "appear",

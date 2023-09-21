@@ -87,7 +87,7 @@ class Blogger:
             to_path = self.filepath
         )
         description.timestamp = self.timestamp
-        description.hash = hash(self.blog)
+        description.hash = hash(self.output_blog)
 
         library.shelf(vars(description))
 
