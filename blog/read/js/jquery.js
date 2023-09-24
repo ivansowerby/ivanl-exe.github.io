@@ -12,3 +12,11 @@ jQuery.fn.edit = function(properties) {
         this.css(style);
     }
 }
+
+jQuery.fn.appendToText = function(...text) {
+    this.text(this.text() + text.join(""));
+}
+
+jQuery.fn.prependToText = function(...text) {
+    this.text(text.join("") + this.text());
+}

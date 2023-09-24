@@ -27,14 +27,14 @@ const VALID_STATUS = "valid";
 const INVALID_STATUS = "invalid";
 
 class Statuses {
-    constructor(elements, statusPlan) {
+    constructor(parent, elements, statusPlan) {
         this.statusPlan = statusPlan;
-        const header = addChild($("body"), "div", "header", BEFORE_ELEMENT);
+        const header = addChild(parent, "div", "header", BEFORE_ELEMENT);
         const headerContainer = addChild(header, "div", "header-container");
-        addArea(elements.length, () => addChild(headerContainer, "div", "status-container"));
-        const statusContainers = $(".status-container");
-        this.statusItems = addTwins(statusContainers, "div", "status-item");
-        for(const [containerSelector, [elementClass, elementsProperties]] of zip(this.statusItems, elements)) {
+        const headerItemClass = "header-item";
+        addArea(elements.length, () => addChild(headerContainer, "div", headerItemClass));
+        this.headerItems = headerContainer.children(asJoinedClasses(headerItemClass));
+        for(const [containerSelector, [elementClass, elementsProperties]] of zip(this.headerItems, elements)) {
             const container = $(containerSelector);
             container.addClass(elementClass);
             for(const elementProperties of elementsProperties) {
@@ -53,10 +53,11 @@ class Statuses {
 
     setStatus(status, ...parentClasses) {
         const selector = asJoinedClasses(...parentClasses);
-        const container = this.statusItems.filter(selector);
+        const container = this.headerItems.filter(selector);
         const statusObjects = this.statusPlan[status];
         for(const [statusClassName, statusClassProperties] of Object.entries(statusObjects)) {
-            const item = container.findFrom(asJoinedClasses(statusClassName));
+            let item = container;
+            if(statusClassName != "") { item = item.findFrom(asJoinedClasses(statusClassName)) }
             item.edit(statusClassProperties)
         }
         return container;

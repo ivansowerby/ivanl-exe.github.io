@@ -9,7 +9,8 @@ class Book {
 
     shelf(onto) {
         const book = addChild(onto, "div", "book-container");
-        console.log(book.html());
+        //focusable
+        book.attr("tabindex", "0");
         const hash = this.content.hash;
         book.attr("id", hash);
         //left

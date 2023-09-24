@@ -8,7 +8,7 @@
                 "animation": "spin 1s infinite"
             }
         },
-        "status-item": {
+        "": {
             "style": {
                 "border-color": "white"
             }
@@ -23,7 +23,7 @@
                 "animation": "none"
             }
         },
-        "status-item": {
+        "": {
             "style": {
                 "border-color": "green"
             }
@@ -43,7 +43,7 @@
                 "animation": "none"
             }
         },
-        "status-item": {
+        "": {
             "style": {
                 "border-color": "red"
             }

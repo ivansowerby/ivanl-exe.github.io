@@ -8,3 +8,7 @@ const cssUnitToInt = (unit) => {
     //double-tilde
     return ~~cssUnitToFloat(unit);
 }
+
+const numberToCssUnit = (n, unit = "px") => `${n}${unit}`;
+
+const intToCssUnit = (n, unit = "px") => numberToCssUnit(Math.floor(n), unit);

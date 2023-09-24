@@ -1,9 +1,5 @@
 $().ready(() => {
-    const baseURL = [
-        window.location.protocol,
-        window.location.host
-    ].join("//")
-    const blogURL = [baseURL, "blog"].join("/")
+    const blogURL = getBlogUrl();
 
     const blogContainer = $(".blog-container");
     blogContainer.on("click", () => {

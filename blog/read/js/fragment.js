@@ -12,28 +12,31 @@ const scrollToBlogFragment = () => {
     scrollToFragment(margin);
 }
 
-const fragmentHeadings = (...parentSelectors) => {
-    const _class = "heading-container";
-    const headings = Array(6).fill("h").map((s, i) => {
-        const heading = `${s}${i + 1}`;
-        return parentSelectors.map((selector) => `${selector} ${heading}`).join(", ");
-    });
+const updateFragment = (hash) => {
+    window.location.hash = hash;
+    scrollToBlogFragment();
+    createNotification();
+}
+
+const fragmentHeadings = (...parents) => {
     const headingContainer = $("<div>");
+    const _class = "heading-container";
     headingContainer.attr("class", _class)
-    $(headings).wrap(headingContainer);
-    
-    const headingContainers = $(`.${_class}`);
-    const fragmentImageSrc = "img/tag_FILL0_wght700_GRAD200_opsz48.svg";
-    const fragmentButton = addImageWithinButton(headingContainers, "heading-fragment-button", fragmentImageSrc, BEFORE_ELEMENT)
-    fragmentButton.on("click", (e) => {
-        const child = $(e.target);
-        const grandparent = ancestor(2, child);
-        const granduncle = grandparent.siblings();
-        const hash = granduncle.attr("id");
-        scrollToBlogElement(hash);
-        window.location.hash = hash;
-        createNotification();
-    });
+    const headings = filterHeadings(...parents);
+    headings.forEach((heading) => {
+        heading.attr("class", "heading");
+        heading.wrap(headingContainer)
+        const headingContainers = heading.parent();
+        const fragmentImageSrc = "img/tag_FILL0_wght700_GRAD200_opsz48.svg";
+        const fragmentButton = addImageWithinButton(headingContainers, "heading-fragment-button", fragmentImageSrc, BEFORE_ELEMENT)
+        fragmentButton.on("click", (e) => {
+            const child = $(e.target);
+            const grandparent = ancestor(2, child);
+            const granduncle = grandparent.siblings();
+            const hash = granduncle.attr("id");
+            updateFragment(hash);
+        });
+    }); 
 }
 
 const traverse = (n, element, locomotion) => {

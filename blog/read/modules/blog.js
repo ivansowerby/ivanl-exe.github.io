@@ -8,14 +8,16 @@ $().ready(() => {
     
     const query = new URLSearchParams(window.location.search);
     if(query.has("hash")) {
+        const statusContainer = blogContainer.parent();
         const hash = query.get("hash");
         getBlog(
+            statusContainer,
             hash,
             (blog) => {
                 window.blog = blog;
                 if(blog.hasOwnProperty("title")) {
                     const title = blog.title;
-                    $("title").text(title);
+                    $("title").prependToText(title, " - ");
                 }
             }
         ).then((blog) => {
@@ -44,9 +46,13 @@ $().ready(() => {
             
             styleBlogForHeader();
             
-            const classes = asClasses(...blogItem.attr("class").split(" "));
-            fragmentHeadings(...classes);
+            fragmentHeadings(blogItem);
             scrollToBlogFragment();
+
+            //table of contents
+            const tableOfContents = addChild($(".layout-item").last(), "div", "table-of-contents");
+            const contents = new Contents(tableOfContents);
+            contents.from(blogItem);
         });
     }
     else {
@@ -58,24 +64,24 @@ $().ready(() => {
     }
 });
 
-const createStatusHeader = (headerPlan, statusPlan) => {
-    window.statuses = new Statuses(headerPlan, statusPlan);
+const createStatusHeader = (parent, headerPlan, statusPlan) => {
+    window.statuses = new Statuses(parent, headerPlan, statusPlan);
     //post-processing
-    const statusItems = window.statuses.statusItems; 
+    const headerItems = window.statuses.headerItems; 
     const wrapper = $("<div>");
     wrapper.attr("class", "status");
-    statusItems.each((_, statusItem) => {
-        const target = $(statusItem);
+    headerItems.each((_, headerItem) => {
+        const target = $(headerItem);
         target.children(".status-image, .status-state").wrapAll(wrapper);
     });
 }
 
 const setStatus = (status, ...classes) => {
     if(window.statuses == undefined) { return null; }
-    const statusItem = window.statuses.setStatus(status, ...classes);
+    const headerItems = window.statuses.setStatus(status, ...classes);
     //post-processing
-    statusItem.attr("value", status);
-    const _status = statusItem.children(".status");
+    headerItems.attr("value", status);
+    const _status = headerItems.children(".status");
     const statusState = _status.children(".status-state");
     const statusContentWidth = cssUnitToFloat(_status.css("max-width"));
     const statusFontSize = statusContentWidth / status.length * 2;
@@ -91,12 +97,12 @@ String.prototype.isVerified = function(publicKey) {
     return crypto.isVerified(this, publicKey);
 }
 
-async function getBlog(hash, parser) {
+async function getBlog(statusContainer, hash, parser) {
     const libraryPlan = new LibraryPlan("../json/library/index.json");
     return await libraryPlan.load().then((libraryPlan) => {
         for(const bookProperties of libraryPlan) {
             if(!bookProperties.hasOwnProperty("hash") || bookProperties.hash != hash) { continue; }
-            return parseBlog(bookProperties, parser);
+            return parseBlog(statusContainer, bookProperties, parser);
         }
         window.error.newMessage(
             "invalid hash",
@@ -105,12 +111,12 @@ async function getBlog(hash, parser) {
     });
 }
 
-async function parseBlog(blog, parser) {
+async function parseBlog(statusContainer, blog, parser) {
     const headerPlan = new HeaderPlan();
     return await headerPlan.load().then((headerPlan) => {
         const statusPlan = new StatusPlan();
         return statusPlan.load().then((statusPlan) => {
-            createStatusHeader(headerPlan, statusPlan);
+            createStatusHeader(statusContainer, headerPlan, statusPlan);
             headerPlan.forEach(([_class, _]) => setStatus(CHECKING_STATUS, _class));
             parser(blog);
             return loadBlog(blog);

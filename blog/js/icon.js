@@ -1,11 +1,9 @@
 $().ready(() => {
-    const baseURL = [
-        window.location.protocol,
-        window.location.host
-    ].join("//")
-
-    const icon = $("#icon");
-    icon.on("click", () => {
+    //icon button
+    const baseURL = getBaseUrl();
+    
+    const iconButton = $("#icon-button");
+    iconButton.on("click", () => {
         window.open(baseURL, "_self");
     });
 });

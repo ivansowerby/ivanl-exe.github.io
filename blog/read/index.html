@@ -10,7 +10,7 @@
         <title>Ivan's Blog</title>
         <meta name="description" content="">
         <meta name="viewport" content="width=device-width, initial-scale=1">
-        <link rel="icon" type="image/x-icon" href="img/favicon.png">
+        <link rel="icon" type="image/x-icon" href="../../img/favicon.png">
         <link rel="stylesheet" href="css/style.css">
         <script src="https://cdn.jsdelivr.net/npm/jquery@3.7.0/dist/jquery.min.js"></script>
         <script src="https://cdn.jsdelivr.net/npm/jquerykeyframes@1.0.8/dist/jquery.keyframes.min.js"></script>
@@ -19,8 +19,9 @@
         <script src="../../js/copyright.js"></script>
         <script src="js/boolean.js"></script>
         <script src="js/mobile.js"></script>
+        <script src="../../js/url.js"></script>
         <script src="../js/icon.js"></script>
-        <script src="js/icon.js"></script>
+        <script src="js/tools.js"></script>
         <script src="../js/string.js"></script>
         <script src="js/array.js"></script>
         <script src="../js/css.js"></script>
@@ -30,14 +31,34 @@
         <script src="js/case.js"></script>
         <script src="../../js/notification.js"></script>
         <script src="../js/book.js"></script>
+        <script src="js/heading.js"></script>
         <script src="../js/fragment.js"></script>
         <script src="js/fragment.js"></script>
         <script src="js/error.js"></script>
+        <script src="js/contents.js"></script>
         <script src="modules/blog.js" type="module"></script>
         <script src="js/header.js"></script>
     </head>
     <body>
-        <img id="icon" src="../../img/favicon.png">
-        <div class="blog-container"></div>
+        <div class="layout-container">
+            <div class="layout-item">
+                <div class="tool-container">
+                    <div class="tool-item">
+                        <button id="icon-button">
+                            <img id="icon" src="../../img/favicon.png">
+                        </button>
+                    </div>
+                    <div class="tool-item">
+                        <button id="back-button">
+                            <img id="back" src="img/undo_FILL0_wght600_GRAD200_opsz48.svg">
+                        </button>
+                    </div>
+                </div>
+            </div>
+            <div class="layout-item">
+                <div class="blog-container"></div>
+            </div>
+            <div class="layout-item"></div>
+        </div>
     </body>
 </html>

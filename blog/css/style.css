@@ -58,19 +58,32 @@ img {
     height: 100px;
     display: flex;
     flex-direction: row;
+    align-items: center;
     gap: 20px;
 }
 
+#icon-button {
+    padding: 0;
+    margin: 0;
+    width: 70px;
+    height: 70px;
+    background: none;
+    border: none;
+}
 
 #icon {
-    height: calc(100% - 2 * 20px);
+    height: 70px;
     aspect-ratio: 1 / 1;
     align-self: center;
     border-radius: 10px;
 }
 
-#icon:hover {
-    border: solid white 2px;
+#icon-button:focus {
+    outline: none;
+}
+
+#icon:hover, #icon-button:focus > #icon {
+    outline: solid white 2px;
 }
 
 #title {
@@ -80,7 +93,7 @@ img {
 .shelf-container {
     width: 100%;
     display: flex;
-    flex-direction: column-reverse;
+    flex-direction: column;
     gap: 10px;
 }
 
@@ -97,13 +110,13 @@ img {
     background-color: #404040;
     opacity: 30%;
     box-sizing: border-box;
-    border: solid black 2px;
+    outline: solid black 2px;
     border-radius: 10px;
 }
 
 .book-container:hover, .book-container:focus {
     opacity: 100%;
-    border: solid white 2px;
+    outline: solid white 2px;
 }
 
 .book-container > div {
@@ -196,8 +209,9 @@ img {
     margin: 10px;
     right: 0;
     bottom: 0;
-    color: orange;
+    color: white;
     background-color: black;
     border-radius: 10px;
-    opacity: 80%;
+    opacity: 90%;
+    cursor: pointer;
 }

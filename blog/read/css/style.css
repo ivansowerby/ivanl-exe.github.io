@@ -41,20 +41,48 @@ img {
     to { opacity: 100%; }
 }
 
-#icon {
+.layout-container {
+    display: grid;
+    grid-template-columns: auto var(--container-width) auto;
+}
+
+.tool-container {
     position: fixed;
     left: 0;
     top: 0;
-    height: 100px;
-    aspect-ratio: 1 / 1;
-    align-self: center;
-    border-radius: 0 0 10px 0;
+    padding: 10px;
+    display: none;
+    flex-direction: column;
+    row-gap: 10px;
+    background-color: #101010;
+    border-radius: 0 0 15px 0;
 }
 
-#icon:hover {
-    border: solid white;
-    border-left: 2px;
-    border-top: 2px;
+.tool-item > button {
+    margin: 0;
+    padding: 0;
+    width: fit-content;
+    height: 100px;
+    background: none;
+    border: none;
+    border-radius: 10px;
+}
+
+.tool-item img {
+    width: 100px;
+    aspect-ratio: 1 / 1;
+    background-color: #606060;
+    box-sizing: border-box;
+    border-radius: 10px;
+}
+
+.tool-item > button:focus {
+    outline: none;
+}
+
+.tool-item img:hover, .tool-item > button:focus img {
+    background-color: white;
+    border: solid white 2px;
 }
 
 .error-container {
@@ -100,8 +128,8 @@ img {
     height: 100%;
     display: flex;
     flex-direction: row;
-    justify-content: center;
     align-items: center;
+    justify-content: space-evenly;
     background-color: #101010;
     box-sizing: border-box;
     border: solid white 2px;
@@ -109,14 +137,11 @@ img {
     font-family: 'Space Grotesk', sans-serif;
 }
 
-.status-container {
-    width: 100%;
-}
-
-.status-item {
+.header-item {
     margin: auto;
     padding-inline: 10px;
     width: fit-content;
+    height: fit-content;
     display: flex;
     align-items: center;
     gap: 10px;
@@ -130,6 +155,7 @@ img {
     display: flex;
     flex-direction: column;
     align-items: center;
+    cursor: help;
 }
 
 .status-image {
@@ -149,8 +175,7 @@ img {
 }
 
 .blog-container {
-    margin: auto;
-    width: var(--container-width);
+    width: 100%;
     min-height: 100vh;
     display: flex;
     font-size: 1.25em;
@@ -219,14 +244,93 @@ img {
     border-radius: 10px;
 }
 
+.content-container {
+    position: fixed;
+    right: 0;
+    top: 0;
+    padding: 10px;
+    max-width: 300px;
+    width: fit-content;
+    display: none;
+    flex-direction: column;
+    row-gap: 5px;
+    background-color: #101010;
+    border-radius: 0 15px 15px 0;
+}
+
+.content-container > .heading {
+    margin: 0;
+    padding: 0;
+}
+
+.fragment-container {
+    display: flex;
+    flex-direction: column;
+    row-gap: 5px;
+    overflow-x: hidden;
+    overflow-y: auto;
+}
+
+.fragment-container > button {
+    padding: 0;
+    width: fit-content;
+    border: none;
+    background: none;
+}
+
+.fragment-container > button:focus {
+    outline: none;
+}
+
+.fragment-container > button:focus .fragment-item > .heading {
+    text-decoration: underline;
+}
+
+.fragment-item {
+    margin: 0;
+    padding: 5px;
+    width: fit-content;
+    display: flex;
+    flex-direction: row;
+    column-gap: 1ch;
+    align-items: center;
+    background-color: var(--background-color);
+    border-radius: 10px;
+    font-size: 17px;
+    font-family: 'Space Grotesk', sans-serif;
+    overflow-x: auto;
+    cursor: pointer;
+    user-select: none;
+}
+
+.fragment-item > .heading, .fragment-item > .heading-prefix {
+    margin: 0;
+    padding: 0;
+}
+
+.fragment-item > .heading-prefix {
+    color: #606060;
+}
+
+.fragment-item > .heading {
+    color: white;
+    white-space: nowrap;
+    overflow: auto;
+}
+
+.fragment-item:hover > .heading {
+    text-decoration: underline;
+}
+
 #copyright {
     position: fixed;
     padding: 5px;
     margin: 10px;
     right: 0;
     bottom: 0;
-    color: orange;
+    color: white;
     background-color: black;
     border-radius: 10px;
-    opacity: 80%;
+    opacity: 90%;
+    cursor: pointer;
 }
