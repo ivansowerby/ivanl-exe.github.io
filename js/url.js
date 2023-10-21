@@ -1,8 +1,8 @@
 const getBaseUrl = () => {
-    return [
-        window.location.protocol,
-        window.location.host
-    ].join("//")
+    const protocol = window.location.protocol;
+    const parsedHostname = psl.parse(window.location.hostname);
+    const domain = parsedHostname.domain;
+    return [protocol, domain].join("//")
 }
 
 const getBlogUrl = () => {
