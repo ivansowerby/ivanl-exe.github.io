@@ -8,3 +8,7 @@ const getBaseUrl = () => {
 const getBlogUrl = () => {
     return [getBaseUrl(), "blog"].join("/");
 }
+
+const getAppUrl = () => {
+    return [getBaseUrl(), "app"].join("/");
+}

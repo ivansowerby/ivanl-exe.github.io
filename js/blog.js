@@ -1,4 +1,4 @@
-$().ready(() => {
+$(window).ready(() => {
     const blogURL = getBlogUrl();
 
     const blogContainer = $(".blog-container");

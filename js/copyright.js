@@ -1,4 +1,4 @@
-$().ready(() => {
+$(window).ready(() => {
     const year = new Date().getFullYear();
     const copyright = $("<a>");
     copyright.attr("id", "copyright");

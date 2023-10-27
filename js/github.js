@@ -1,4 +1,4 @@
-$().ready(() => {
+$(window).ready(() => {
     const githubUserURL = "https://github.com/ivanl-exe";
 
     const githubContainer =  $(".github-container");

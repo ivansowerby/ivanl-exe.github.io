@@ -3,7 +3,7 @@ const fontFamily = "Space Grotesk";
 
 const divisions = 100;
 
-$().ready(() => {
+$(window).ready(() => {
     const canvas = $("#background");
     let graph = new Graph(canvas);
 
