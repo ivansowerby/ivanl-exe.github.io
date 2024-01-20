@@ -19,17 +19,18 @@ $(window).ready(() => {
     beginInterval(() => {
         const topMargin = fontSize / canvas.height() / 2;
         const equation = (x) => 1 - (Math.sin(x * 2 * Math.PI) + 1) / 2 * (1 - topMargin) - (topMargin / 2);
-        const variable = {x: position / divisions};
+        const x = position / divisions;
+        const variable = {x: x};
         const color = gradient.color.toRGB();
         const style = {
             fillStyle: color,
             font: `${fontSize}px ${fontFamily}`
         };
 
-        if(position != 0 && position % divisions == 0) {
+        if(x != 0 && x % 1 == 0) {
             gradient.reverseDirection();
         }
-        if(position > divisions) {
+        if(x > 1) {
             graph = shiftGraph(graph, -1);
         }
 
