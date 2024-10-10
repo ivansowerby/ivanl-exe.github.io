@@ -4,11 +4,12 @@ const getBaseUrl = (...subdomain) => {
     const domain = parsedHostname.domain;
     return [
         protocol,
-        [subdomain, domain].join(".")
-    ].join("//")
+        [...subdomain, domain].join(".")
+    ].join("//");
 }
 
 const getBlogUrl = () => {
+    console.log(getBaseUrl());
     return getBaseUrl("blog");
 }
 
